@@ -42,7 +42,6 @@ set_global_assignment -name TOP_LEVEL_ENTITY main
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:30:03  Апрель 02, 2014"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
-set_global_assignment -name VHDL_FILE LEDA.vhd
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -51,7 +50,6 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name BDF_FILE main.bdf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -60,8 +58,6 @@ set_location_assignment PIN_B10 -to LED1
 set_location_assignment PIN_C11 -to LED2
 set_location_assignment PIN_D12 -to LED3
 set_location_assignment PIN_B7 -to LED0
-set_global_assignment -name VHDL_FILE "third-patry/8 SEG LED Board/LED8.vhd"
-set_global_assignment -name VHDL_FILE "third-patry/spiadc/trunk/adcrecv.vhd"
 set_location_assignment PIN_A3 -to DigitSeg[0]
 set_location_assignment PIN_B16 -to RESET
 set_location_assignment PIN_A2 -to DigitSeg[1]
@@ -75,8 +71,6 @@ set_location_assignment PIN_B5 -to LEDseg[5]
 set_location_assignment PIN_B6 -to LEDseg[6]
 set_location_assignment PIN_F3 -to LEDseg[7]
 set_location_assignment PIN_F2 -to LEDseg[0]
-set_global_assignment -name VHDL_FILE "hex-to-led.vhd"
-set_global_assignment -name QIP_FILE simple_counter.qip
 set_location_assignment PIN_E9 -to AFC_LED_RED
 set_location_assignment PIN_G11 -to AFC_LED_GREEN
 set_location_assignment PIN_E8 -to AFC_BUTTON
@@ -86,13 +80,29 @@ set_location_assignment PIN_E10 -to ADC_CLK
 set_location_assignment PIN_E7 -to ADC_OVERLOAD
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE stp_adc.stp
-set_global_assignment -name SIGNALTAP_FILE stp_adc.stp
-set_global_assignment -name QIP_FILE main_pll.qip
-set_global_assignment -name VHDL_FILE "third-patry/spi_master_slave/trunk/rtl/spi_master_slave/spi_master.vhd"
 set_location_assignment PIN_C6 -to DAC_CS
 set_location_assignment PIN_A8 -to DAC_DATA
 set_location_assignment PIN_A9 -to DAC_CLK
-set_global_assignment -name SIGNALTAP_FILE stp_dac.stp
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SEARCH_PATH "/home/dima/projects/afc-smm/software/third-patry/uart2bus/trunk/vhdl/rtl"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/baudGen.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uartTx.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uartTop.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uartRx.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uartParser.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uart2BusTop_pkg.vhd" -library work
+set_global_assignment -name VHDL_FILE LEDA.vhd
+set_global_assignment -name BDF_FILE main.bdf
+set_global_assignment -name VHDL_FILE "third-patry/8 SEG LED Board/LED8.vhd"
+set_global_assignment -name VHDL_FILE "third-patry/spiadc/trunk/adcrecv.vhd"
+set_global_assignment -name VHDL_FILE "hex-to-led.vhd"
+set_global_assignment -name QIP_FILE simple_counter.qip
+set_global_assignment -name SIGNALTAP_FILE stp_adc.stp
+set_global_assignment -name QIP_FILE main_pll.qip
+set_global_assignment -name VHDL_FILE "third-patry/spi_master_slave/trunk/rtl/spi_master_slave/spi_master.vhd"
+set_global_assignment -name SIGNALTAP_FILE stp_dac.stp
+set_global_assignment -name VHDL_FILE "third-patry/uart2bus/trunk/vhdl/rtl/uart2BusTop.vhd" -library work
+set_location_assignment PIN_P11 -to UART_TX
+set_location_assignment PIN_R11 -to UART_RX
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
