@@ -39,7 +39,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 // DESCRIPTION	:	 Complex Multiplier by 0.5411
 // FUNCTION:	 	   Constant multiplier	 to cos(PI/8)-cos(3*PI/8) =0.5411
-// FILES:			 MPUÑ541.v
+// FILES:			 MPUï¿½541.v
 //  PROPERTIES: 1) Is based on shifts right and add
 //							2) for short input bit width 0.541 is approximated as 0_1000_1010_1                            
 //							3) for medium bit width 1.3066 is approximated as 0_1000_1010_1001 	       
@@ -50,7 +50,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 `include "FFT256_CONFIG.inc"
 
-module MPUC541 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI,  );
+module MPUC541 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI );
 	`FFT256paramnb 
 	
 	input CLK ;

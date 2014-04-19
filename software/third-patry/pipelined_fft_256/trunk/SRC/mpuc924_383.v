@@ -39,7 +39,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 // DESCRIPTION	:	 Complex Multiplier by 0.924
 // FUNCTION:	 	   Constant multiplier	 to cos(PI/8)-cos(3*PI/8) =0.9239
-// FILES:			 MPUÑ924.v
+// FILES:			 MPUï¿½924.v
 //  PROPERTIES: 1) Is based on shifts right and add
 //							2) for short input bit width 0.924 is approximated as 0.1110_1100_1 =1_00T0_1100_1                           
 //							3) for long  bit width 0.9239 is appr. as 0.1110_1100_1000_0011 =1_00T0_1100_1000_0011 	
@@ -50,7 +50,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 `include "FFT256_CONFIG.inc"
 
-module MPUC924_383 ( CLK,EI ,ED, MPYJ,C383,DR,DI ,DOR ,DOI,  );
+module MPUC924_383 ( CLK,EI ,ED, MPYJ,C383,DR,DI ,DOR ,DOI );
 	`FFT256paramnb 
 	
 	input CLK ;

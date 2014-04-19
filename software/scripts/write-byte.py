@@ -22,6 +22,7 @@ parser = OptionParser()
 parser.add_option("-d")
 parser.add_option("-a")
 parser.add_option("-q")
+parser.add_option("-s")
 
 (options, args) = parser.parse_args()
 
@@ -36,8 +37,16 @@ if options.a != None:
 if options.q != None:
     print("debug mode")
     filename = "binfile.bin"
+    
+if options.s != None:
+    print("size = "+ options.s)
+    length = int(options.s)
 
-binData = struct.pack('>BBHBB', 0, command, addr, length, data)
+if length == 1:
+    binData = struct.pack('>BBHBB', 0, command, addr, length, data)
+else:
+    command = 0b00100000
+    binData = struct.pack('>BBHBH', 0, command, addr, length, data)
 
 myfile = open(filename, 'wb')
 myfile.write(binData)

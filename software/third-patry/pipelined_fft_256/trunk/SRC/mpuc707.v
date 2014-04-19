@@ -49,7 +49,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 `include "FFT256_CONFIG.inc"
 
-module MPUC707 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI,  );
+module MPUC707 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI );
 	`FFT256paramnb 
 	
 	input CLK ;

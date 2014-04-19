@@ -39,7 +39,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 // DESCRIPTION	:	 Complex Multiplier by 0.7071
 // FUNCTION:	 	   Constant multiplier	 to cos(PI/8)+cos(3*PI/8) =1.307
-// FILES:			 MPUÑ1307.v
+// FILES:			 MPUï¿½1307.v
 //  PROPERTIES: 1) Is based on shifts right and add
 //							2) for short input bit width 1.307 is approximated as 1_0100_111       =         1_0101_00T	                        
 //							3) for medium bit width 1.3066 is approximated as 1_0100_1110_0111_11= 1_0101_00T0_1000_0T	 	       
@@ -50,7 +50,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 `include "FFT256_CONFIG.inc"
 
-module MPUC1307 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI,  );
+module MPUC1307 ( CLK,EI ,ED, MPYJ,DR,DI ,DOR ,DOI );
 	`FFT256paramnb 
 	
 	input CLK ;
