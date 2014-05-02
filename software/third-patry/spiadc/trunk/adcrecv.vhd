@@ -106,7 +106,7 @@ ARCHITECTURE BEH OF AdcRecv IS
     signal ReceiveWindow : std_logic := '0';
 
     type States is ( stSerLoading, stQuietCheck); --stReady,
-    signal FSMState : States;
+    signal FSMState : States := stQuietCheck;
     signal NextState : States;
 
     signal SDEnough     : std_logic;

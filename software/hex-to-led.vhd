@@ -152,7 +152,7 @@ Period_1mS <= Period1mS;
 		END IF;		
 	END PROCESS;
 		
-	PROCESS(Cathod)
+	PROCESS(Cathod, LED0, LED1, LED2, LED3)
 	BEGIN
 		CASE Cathod is
 			when "01" => LED <= LED3;
