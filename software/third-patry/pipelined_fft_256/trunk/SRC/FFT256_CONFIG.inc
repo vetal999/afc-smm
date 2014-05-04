@@ -52,7 +52,7 @@
 //`define FFT256paramifft ;	
 
 //buffer number 2 or 3
-`define FFT256parambuffers3	
+`define FFT256parambuffers2	
 
 // buffer type: 1 ports in RAMS else -2 ports RAMS
 //`define FFT256bufferports1
