@@ -32,12 +32,7 @@ ENTITY HEX_TO_LED IS
 	
 		-- LED8 PIN 
 		LEDOut:		 OUT STD_LOGIC_VECTOR(7 DOWNTO 0);	-- LED Segment 
-		DigitSelect: OUT STD_LOGIC_VECTOR(3 DOWNTO 0);	-- LED Digit 
-		
-		-- clock
-		Period_1S: 		OUT STD_LOGIC;
-		Period_1uS: 	OUT STD_LOGIC;
-		Period_1mS: 	OUT STD_LOGIC
+		DigitSelect: OUT STD_LOGIC_VECTOR(3 DOWNTO 0)	-- LED Digit 
 	);
 END HEX_TO_LED;
 
@@ -47,54 +42,29 @@ END HEX_TO_LED;
 ARCHITECTURE Behavioral OF HEX_TO_LED IS
 	SIGNAL LED:	STD_LOGIC_VECTOR(3 downto 0);
 	SIGNAL Cathod: STD_LOGIC_VECTOR(1 downto 0);
-	SIGNAL Period1uS, Period1mS, Period1S, cathod_clk: STD_LOGIC;
+	SIGNAL cathod_clk: STD_LOGIC;
 BEGIN
 	
-Period_1S <= Period1S;
-Period_1uS <= Period1uS;
-Period_1mS <= Period1mS;
 		
 	------------------------------------------------------------------------------
 	-- Clock 
 	------------------------------------------------------------------------------
-	PROCESS( RESET, GCLKP1, Period1uS, Period1mS )
-		VARIABLE Count  : STD_LOGIC_VECTOR(5 DOWNTO 0);
-		VARIABLE Count1 : STD_LOGIC_VECTOR(9 DOWNTO 0);
-		VARIABLE Count2 : STD_LOGIC_VECTOR(9 DOWNTO 0);
-		VARIABLE Count3 : STD_LOGIC_VECTOR(4 DOWNTO 0);
+	PROCESS( RESET, GCLKP1 )
+		VARIABLE Count  : integer range 0 to 2047;
+		
 	BEGIN
 		------------------------------------
 		--Period: 1uS 
-		IF( RESET = '0' ) THEN 
-			Count := "000000";
+		IF( RESET = '1' ) THEN 
+			Count := 0;
 		ELSIF( GCLKP1'EVENT AND GCLKP1='1' ) THEN 
-			IF( Count>"110000" ) THEN 	Count := "000000";	--  110000:48  50/50M = 1us
-			ELSE                  		Count := Count + 1;
+			IF( Count > 511 ) THEN 	
+				Count := 0;
+				cathod_clk <= '1';
+			ELSE                  		
+				Count := Count + 1;
+				cathod_clk <= '0';
 			END IF;
-			Period1uS <= Count(5);
-		END IF;
-		------------------------------------
-		--Period: 1mS 
-		IF( Period1uS'EVENT AND Period1uS='1' ) THEN 
-			IF( Count1>"1111100110" ) THEN 	Count1 := "0000000000";  -- 1111100110:998  1000*1us = 1ms
-			ELSE                  			Count1 := Count1 + 1;
-			END IF;
-			Period1mS <= Count1(9);
-
-		END IF;
-		------------------------------------
-		--Period: 1S (1111100110: 998)
-		IF( Period1mS'EVENT AND Period1mS='1' ) THEN 
-			IF( Count2>"1111100110" ) THEN 	Count2 := "0000000000";
-			ELSE                  			Count2 := Count2 + 1;
-			END IF;
-			
-			Period1S  <= Count2(9); 
-		END IF; 
-		
-		IF( Period1mS'EVENT AND Period1mS='1' ) THEN 
-			Count3 := Count3 + 1;
-			cathod_clk  <= Count3(2); 
 		END IF;
 	END PROCESS;
 	
@@ -136,19 +106,21 @@ Period_1mS <= Period1mS;
 	-------------------------------------------------
 	
 	-- Dynamic indacator  
-	PROCESS( RESET, cathod_clk )   
+	PROCESS( RESET, GCLKP1 )   
 	BEGIN
-		IF( RESET = '0' ) THEN 
+		IF( RESET = '1' ) THEN 
 			Cathod <= "00";
-		ELSIF( cathod_clk'EVENT AND cathod_clk = '1' )THEN 
-			CASE Cathod IS
-				when "11" =>DigitSelect<= "0001";
-				when "10" =>DigitSelect<= "0010";
-				when "01" =>DigitSelect<= "0100";
-				when "00" =>DigitSelect<= "1000";
-				when others=>DigitSelect<= "XXXX";
-			END CASE;
-			Cathod <= Cathod + 1; 			
+		ELSIF( GCLKP1'EVENT AND GCLKP1='1' )THEN 
+			if (cathod_clk = '1') then
+				CASE Cathod IS
+					when "11" =>DigitSelect<= "0001";
+					when "10" =>DigitSelect<= "0010";
+					when "01" =>DigitSelect<= "0100";
+					when "00" =>DigitSelect<= "1000";
+					when others=>DigitSelect<= "XXXX";
+				END CASE;
+				Cathod <= Cathod + 1; 			
+			end if;
 		END IF;		
 	END PROCESS;
 		

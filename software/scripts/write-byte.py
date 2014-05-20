@@ -57,5 +57,6 @@ else:
 
 #ser.open()
 ser.write(binData)
-#ser.close()
-#myfile.write(binData)
+
+ser.close()
+

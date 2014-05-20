@@ -79,27 +79,6 @@ applicable agreement for further details.
 		(text "DigitSelect[3..0]" (rect 127 43 187 55)(font "Arial" ))
 		(line (pt 208 48)(pt 192 48)(line_width 3))
 	)
-	(port
-		(pt 208 64)
-		(output)
-		(text "Period_1S" (rect 0 0 40 12)(font "Arial" ))
-		(text "Period_1S" (rect 147 59 187 71)(font "Arial" ))
-		(line (pt 208 64)(pt 192 64)(line_width 1))
-	)
-	(port
-		(pt 208 80)
-		(output)
-		(text "Period_1uS" (rect 0 0 44 12)(font "Arial" ))
-		(text "Period_1uS" (rect 143 75 187 87)(font "Arial" ))
-		(line (pt 208 80)(pt 192 80)(line_width 1))
-	)
-	(port
-		(pt 208 96)
-		(output)
-		(text "Period_1mS" (rect 0 0 48 12)(font "Arial" ))
-		(text "Period_1mS" (rect 139 91 187 103)(font "Arial" ))
-		(line (pt 208 96)(pt 192 96)(line_width 1))
-	)
 	(drawing
 		(rectangle (rect 16 16 192 128)(line_width 1))
 	)
